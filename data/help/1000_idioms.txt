@@ -1,0 +1,138 @@
+
+Need a clear mapping for what operations...
+	...generate files
+	...generate classes
+	.. generate code snippets
+
+"newClass = pattern.createYYY()"	=> generate one or more classes
+
+"newObject = newClass.newInstance()"    =>  return utility object for generating code for instantiated objects
+
+"someCode = newClass.xxxCG()"		=> generate code snippet
+
+"method.body.addLines( someCode )" 	=> add code snippet to method body
+
+"xxxClass"				=> naming convention for a generated class
+
+"xxxCode"				=> naming convention for a generated code snippet
+
+
+
+ARCHITECTURE
+
+ Reactor (java) -------				<=== Does not need to know about ProjectDirs, only packages
+     |                |
+     |                |
+     |                |
+ JavaProject (or cpp) |				<=== Maps packages to ProjectDirs and classes to ProjectFiles
+     |	    \         |	            
+     |	     \        |              
+     |        \       |
+ProjectModel	JavaClassModel (or cpp)		<=== All models are independent of one another
+
+
+-----------------------------------------
+
+application scaffolds
+
+    window app
+    web server
+    compiler
+    network chat 
+    three tier
+    search engine
+    
+----------------------------------------
+
+sharedlib
+    staticlib
+    dynamiclib
+    
+network
+    clientserver
+    remoteproxy
+        java
+            rmi
+    protocol
+        round trip time
+        icmp
+        tcp stack
+    
+parallism
+    multitasking
+        symbian
+            activeobject
+    multithreading
+
+memory
+    allocation
+        heap
+ 
+graphics
+    transformation
+        rotate
+
+-----------------------------------------
+
+
+Cliche's
+========
+code completion for line editor
+parser for a small language
+character parsing for regular expression matching
+TCP server
+UDP Server
+
+
+Generate a compilable Qt application
+	- show an initial example
+
+Generate a cliche' to an existing code base
+	- show integration of context and concept
+	- show techniques for context modeling
+	  e.g. manual markers, automatic patterns
+
+Generate a working client-server program from a set of concepts
+	- show reuse flexibility over components
+	- show an example of a CBP DSL
+	- show level of work versus manual coding
+	- show disadvantages or limitations of the approach
+
+Show how domain language changes little across frameworks of varying sophistication
+	- RMI
+	- client-server
+	- http to a web server
+	- Symbian
+	- Web kit
+	- Access to a web service
+
+Simple General Examples
+	- Personal web app
+	- widgets with custom integration to server
+	- Simple Client Server
+	- Personal web page with AJAX
+	- Simple Games
+	- Simple Parser generation
+
+Simple Nokia Examples	
+	- Symbian Mobile Apps for Hello world
+	- Symbian Qt App (non-HB)
+	- Android Phone Apps
+
+Money Making Examples
+	- Integrating commerical web services
+	- Web 3.0 techniques and library integration
+	- Web 3.0 innovation: neural nets, bots and object protocol extensions
+	- Web applications using .NET or EJB
+
+CBE Symbian Domain Frameworks
+	- MMF for recording and playback
+	- STIF updates
+	- MPX updates
+
+CBP Java/C++ Code Generation
+	- shared libraries
+	- client-server
+	- class loaders
+	- Neural Networks
+

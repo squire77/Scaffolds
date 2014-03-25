@@ -1,0 +1,34 @@
+Usage
+
++CppMain()/QtMain()
+ +sysIncludes
+ +projIncludes
+ +statements
+ +returnObject
+ +returnType
+
++CppClass( name )
+ +addMethod( name ): CppMemberFunc
+ +addProtectedMethod( name ): CppMemberFunc
+ +headerSysIncludes
+ +headerProjIncludes
+ +sourceSysIncludes
+ +sourceProjIncludes
+ +baseClases
+ +methods
+ +protMethods
+ +variables
+ +frontMacros
+
+-CppMemberFunc( name, clazz )
+ +isStatic		: boolean
+ +isConst		: boolean
+ +returnType	: String
+ +parameters	: Map
+ -body		: CppMemberFuncDef
+
+-CppMemberFuncDef( memberFunc )
+ +addStatements	: String
+ +statements
+
+

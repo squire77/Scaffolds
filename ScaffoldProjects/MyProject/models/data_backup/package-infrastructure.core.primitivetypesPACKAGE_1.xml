@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:umlPackage xmlns:ns2="scaffold.uml.basic">
+    <name>infrastructure.core.primitivetypes</name>
+    <visibility>PUBLIC</visibility>
+    <ID>PACKAGE_1</ID>
+    <nestedPackages/>
+    <ownedTypes/>
+</ns2:umlPackage>

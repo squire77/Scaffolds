@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:cmClass xmlns:ns2="scaffold.uml.basic.cm">
+    <name>MyInterface1</name>
+    <visibility>PUBLIC</visibility>
+    <ID>TYPE_2</ID>
+    <package>PACKAGE_2</package>
+    <interface>true</interface>
+    <abstract>false</abstract>
+    <finalSpecialization>false</finalSpecialization>
+    <superClasses/>
+    <ownedOperations/>
+    <ownedAttributes/>
+</ns2:cmClass>

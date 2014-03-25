@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:myType xmlns:ns2="test.scaffold">
+    <name>my-type</name>
+    <visibilityKind>0</visibilityKind>
+    <ID>TYPE_1</ID>
+    <package>PACKAGE_2</package>
+</ns2:myType>

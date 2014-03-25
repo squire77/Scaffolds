@@ -1,0 +1,33 @@
+Usage
+
++CppBuildFile
+ +name
+ +includeDirs
+ +includeFiles
+ +sourceFiles
+
++CppProject
+ +name
+ +projDir
+ +includeDir
+ +sourceDir
+ +headers
+ +sources
+
+// Generic Project
+p = new ProjectDir( 'myproject' ) 		// convention is all lowercase
+d1 = p.AddDir( 'subdir1' )
+file = d1.AddFile( 'file.txt' )
+file.AddLine( 'this is a test' )
+p.writeAll( 'c:\groovytest' )
+
+
+// CPP Project
+// auto creates /inc, /src and Makefile
+p = new CppProject( 'myproject' )
+p.buildFile.name = 'myproject.pro' 		// typically, rename the build file
+
+
+// Symbian Project
+symDir = new SymbianProject( 'myproject', 3 )
+

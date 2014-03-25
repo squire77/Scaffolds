@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:umlPackage xmlns:ns2="scaffold.uml.basic">
+    <name>default</name>
+    <visibility>PUBLIC</visibility>
+    <ID>PACKAGE_2</ID>
+    <nestedPackages/>
+    <ownedTypes>
+        <typeID>TYPE_1</typeID>
+        <typeID>TYPE_2</typeID>
+        <typeID>TYPE_3</typeID>
+        <typeID>TYPE_4</typeID>
+        <typeID>TYPE_5</typeID>
+        <typeID>TYPE_6</typeID>
+    </ownedTypes>
+</ns2:umlPackage>

@@ -1,0 +1,40 @@
+bi-directional association
+
+add/create
+
+addAssociation( class name ) {
+  make bi-directional
+  return object
+}
+
+
+// Idiom: Create an association to an owned object
+//
+// Description: Owned class has a private constructor and 
+//              must be created via a factory method
+//
+// - owned reference is accessible
+// - association is bi-directional
+//
+<OwnedClass> add<OwnedRole>( String name ) {
+  create and store owned member
+  return owned member
+}
+
+// Idiom: Create a private association to an owned object
+//
+// Description: Owned class has a private constructor and
+//              is only created by constructor of its owner
+//
+// - owned reference is accessible
+// - association is bi-directional
+//
+<OwnerClassConstuctor>(...) {
+  create and store owned member
+}
+
+// Idiom: Convenience method for splitting text into a list
+//        of strings
+//
+// Description: Single multi-line 
+

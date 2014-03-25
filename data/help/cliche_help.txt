@@ -1,0 +1,550 @@
+
+WHY DID I DO CLICHE'S AND MATCH/R AND HOW DOES IT RELATE TO MAP?
+
+
+I'm not sure I believe in building systems that are fully generated from models when 
+there is too much platform code those models rely on that isn't modeled.
+
+In that case, I believe modeling the concepts of the platform and integrating the concepts of the
+application directly with them is the most effective means of constructing a system.
+
+This stance is not inconsistent with MDA/MDD approaches. I just mean I'd like to address the
+problem of modeling platform concepts and utilizing the result in a code centric environment.
+
+
+The vision is outlined below.
+
+All of the software organizations I have worked with are code centric.
+That is, for one reason or another (e.g., valuable legacy code assets), adoption of a model centric
+approach (like MDA/MDD) is not foreseable in the near future.
+
+However, I like the idea of automating software development, and the standards
+and tools associated with model centric approaches have established an effective means for 
+implementing such automation.
+
+My goal is to achieve increased programmer productivity using model centric tools and
+techniques in a code centric environment.
+
+This web site documents my findings and provides access to the source code and tools I have
+developed along the way.
+
+
+Using Pattern Matching to Automate Program Maintenance
+
+I started out by implementing a transformation system using text match/bind/replace constructs.
+I thought to define "maintenance procedures" that edit different project elements 
+(e.g., source and build files). The goal was to define abstract procedures that maintain
+similar code in the same way across platforms.
+
+The result was Match/R. 
+The process turned out to be more of a learning experience than anything.
+Parsing and modifying files with pattern matching is not a fun way to automate program maintenance.
+Also, the cost-to-benefit ratio of 'maintenance procedures' turns out to be pretty low.
+
+
+Cliche' Based Editing
+
+While coding up program generators, I stumbled into an approach where I used a
+command line to incrementally generate program fragments while viewing the results as they
+progress. For example, I'd type 'c = new JavaClass( 'MyClass' )' and an empty class definition
+would be viewed. Next, I'd type 'c.addMethod( 'mymethod' ) and 'void mymethod() {}' would
+be added to the class definition. (Note: the same approach can be applied to incrementally 
+build models.)
+
+This approach is called cliche' based editing (CBE) (several articles have been published about it). 
+I like the approach cause code generation and transformations become interactive. The programmer 
+can modify parts he doesn't like as he incrementally generates multiple, related code fragments 
+across the system. 
+
+Each code generation expression is 'one shot' so that synchronization between a
+model and generated code is not necessary. Instead, small pre-conceived configurable models are
+applied to generate code; the developer invokes these models as cliche' operations, one at a time,
+undoing and redoing operations in an interactive fashion.
+
+While the approach is useful, the hardest part about CBE is combining cliche's.
+(In my view) A cliche' has two parts: the cliche' model and the context model. The latter 
+defines how the cliche' is integrated into a pre-existing context. The problem is akin to 
+merging two abstract collaboration framworks. Merging collaboration roles should not interfere 
+with the goals of either framework, and the contexts should be mutually compatible.
+
+
+Scaffold Programming
+
+Lately, I've decided to resolve the "cliche' combining" issue by designing DSLs that
+comprise multiple cliche's. The cliche's are compatible in that they are designed to
+be merged together.
+
+I refer to this approach as 'scaffold programming' (SP) (I saw the term 'scaffold' on an RoR page
+and thought it seemed to fit.) The term 'scaffold' implies first, the generated code provides
+a complete foundation that will uphold further building blocks and second, the generated code is 
+only a starting point to be edited and refined manually. Thus, the goal of SP is to produce 
+a working system quickly by combining detailed concepts from the problem domain and combining 
+those concepts' implementations into a working program. This is a less ambitious goal than MDA/MDD,
+but is applicable to code centric organizations.
+
+As with CBE, the code generation process 
+is intended to take place in an interactive environment with a command-line and views. Unlike CBE, 
+however, each command is collected into a script for re-generating the complete scaffold.
+
+I just completed my first example of SP. It generates a simple implementation of Doug Schmidt's 
+reactor, connector and acceptor patterns in Java. I'm extending the example to show how a 
+scaffold program for Java can easily be ported to C++. Next, I'll extend the example to show
+how the scaffold program can be abstractly executed (as in 'model execution'). Another example,
+would be demonstrate generation of unit tests using an SP DSL for testing.
+
+
+***********************************************************************************
+
+Platform Independence requires a generic modeling proper like UML.
+A visual UML-like representation is easy to add to the editor.
+Forms summarizing idioms and patterns I have learned would go a long way toward self-promotion.
+Case for using a limited form of Groovy instead of defining an ASL.
+Export scaffolds to XMI and load them into an MDA/MDD tool as a starting point.
+
+Core MDA/MDD Concepts
+- PIM/PSM translation and synchonization models
+- Application and Technology separation
+- Model execution with ASL
+- Marking Systems
+- UML Profiles
+- MoF for porting across meta-models
+- XMI for vendor portability
+
+
+Current SP Focus
+- DSL definition
+- Cliche' integration
+- Platform Framework implementation
+- interactive design
+- model execution
+
+Lesser SP Focus
+- cross platform
+- application/technology separation
+
+
+Proto-patterns
+- propagate model constraints with rules
+- use grammar patterns to filter correct programs
+- paths with wild cards decouple access to complex changing structures
+- implement code generators with builders and pretty printers to separate code models and views
+- don't use visitor with simple unchanging structures; implement pretty printers with paths instead
+- use Maps of Maps to define n-ary parallel arrays
+- cliche' operations generate small correct code integrations
+- simplify configurations with a configuration of defaults
+- markers (insert here) and marker boundaries (begin/end) simplify filtered code generation
+- apply functional transforms to convert structures (Lists/Maps) to code
+- abstractions come from the problem domain
+- integration is performed a single level of abstraction
+- write procedures at a single level of abstraction
+- avoid null as a parameter value to disambiguate overloaded methods
+- text templates are good for large, mostly unchanging text---not small code snippets
+- meta-characters outside the base grammar are needed to embed a language in a language
+- use parent-child ownership to manage memory cleanup of shared tree structures
+
+
+Cliche' Idioms
+- (system) configuration variable
+- (private, inner, file, global) enum
+- (private, inner, file, global) constant
+- member initialization
+- owned reference
+- Symbian two-phase constructor
+- (get/set, add/remove, addAt/removeAt, addByName/removeByName, getAt/setAt, getByName/setByName) accessor
+
+
+Cliche' patterns
+- asynchronous task handler
+- shared library - exported API, frozen API
+- Reactor/Accepter/Connector
+- Protocol - backward compatible updates
+
+
+
+
+===================================================================================
+
+
+
+Applications
+
+(1) Cliche' Based Editting
+	- this is difficult due to context modeling
+	- one useful application is 'planned extensions'
+
+(2) Independent Code Generation
+	- this is a classic approach where generated code is not mingled with manual code
+
+(3) Programming Scaffolds
+	- goal is encode many, many patterns to create a starting executable infrastructure for new projects
+	- this technique does not require a CBE and can be performed using command line scripts
+	- the paradigm of CBE can be applied here to enable interactive elaboration of models with DSLs
+
+
+Vision
+	- tools for code generation and automated program editing
+		- match/r utility	: pattern matching idioms
+		- generator utility	: pretty printing idioms
+		- parsing techniques
+
+	- platform models for generating projects
+		- project models: C++, Java, Qt/Hb, Symbian
+		- class models
+		- [associations, MSC, state machines, petri nets]
+
+	- model execution
+		- behavior is supported with 'addLines()' for method bodies
+		- (instead of ASL) a restricted subset of Groovy is used
+		- Groovy is mapped to C++ or Java during code generation
+		- utilities can be generated to access libraries, e.g. printing
+		- model directives are supported to enhance model execution
+
+	- Views for concept-level programming
+		- code view of generated files
+		- graphical views of high-level model
+
+
+Editor
+	Cliche' Mode 	
+		- In cliche mode, the model state is stored 
+		- Statements are exeucted one-at-a-time to update the model
+
+	Program Mode
+		- In program mode, the program is edited and periodically executed all-at-once
+
+	Model Execution
+		- Model is executed to exercise and debug behavior and application logic
+			
+==================================================================================
+
+Open source
+	- Goal #1: make CBE/CBP as easy and compelling as possible
+	- Goal #2: enable a community to contribute as many idioms and concepts as possible
+	- Goal #3: popularize the community as much as possible
+	- Hosting 
+		- Who to go with?
+		- what licensing?
+	- Documentation
+		- overview
+		- introduction
+		- process for domain modeling
+		- examples
+		- demonstrations
+		- JavaDoc
+		- references
+	- Creative DOC
+		- Electronic backlog view with lines drawn though completed items
+		- Electronic CRC cards
+		- One pagers for...
+			...pretty printer idioms
+			...pattern matching idioms
+			...cliche' coding conventions
+	- Test Driven Development
+		- the examples are the tests
+		- how to automate running of the examples?
+	- Groovy development - recommend Netbeans IDE 6.5 with Groovy plugin
+	- Eclipse integration
+
+
+
+Paper publication
+	- give practitioners something useful
+	- document findings and comparisons for future researchers
+
+=====================================================================================
+
+DEMOS
+	- porting a scaffold across platforms
+	- model execution
+	- dynamic programming
+	- reflexive concept scaffolding
+
+TO DO
+	- pretty printer for Java class model
+	- pretty printer interface for C++ class model
+    		- support for alternate variable naming styles
+    		- support for alternate brace and indentation schemes
+    		- removal of undesirable whitespace
+	- model support for constants, globals and constructors
+	- view support for constants, globals and constructors with initializers
+	- project support for configuration parameters
+
+
+Refactorings
+	- CppPrinter, JavaPrinter
+		- create a class
+		- create an interface
+		- use typed parameters
+	- package naming
+		- remove plurality, e.g. concept---not concepts
+		- projectmodel should be just project
+
+Styles
+	- constants are uppercase
+	- globals start with uppercase
+	- vars start wtih m_
+	- owned poineters start wtih m_p
+
+CppHeaderFile View
+	- header with author, date, time
+	- includes
+	- externs for public constants and globals
+	- forward declarations
+	- classes
+		- base classes
+		- declaration of public constants and globals
+		- constructors
+		- destructor
+			- virtual by default
+			- deallocate pointer variables
+		- methods: public, protected, private
+			- statics
+			- private init()
+		- vars: public, protected, private
+			- constants
+			- statics (globals)
+
+CppSourceFile View
+	- header with author, date, time
+	- includes
+	- definition of constants and globals
+	- classes
+		- definition of public constants and globals
+		- definition of other constants and globals
+		- constructors
+			- call base class ctors
+			- init private vars with ctor param or default value
+			- call private init()
+		- init()
+			- allocate pointer variables
+		- destructor
+			- deallocate pointer variables
+		- methods: public, protected, private
+
+Class
+	- add global variable/constant to class
+	- add global variable/constant to System class singleton
+	- add pointer member variable
+		- assume: lifetime with class, owned by class
+		- add to <ctor>
+		- add to <dtor>
+		- add to private member variable section
+
+Project
+	- add global variable/constant to file
+	- add configuration variable
+
+
+=====================================================================================
+
+
+				OPEN SOURCE RELEASE 0.1
+
+Support Cliche' Mode
+	- store model state
+	- show visual model (using a reverse engineering tool from simpel Java code?)
+	- incrementally update model with each cliche' statement
+
+Install code for choosing a file from the directory structure
+	- use a default location for model scripts
+	- remove org.periquet.lib.awt
+	- add org.periquet.lib.swing
+
+Validated command line
+	- command line completion
+
+Load Plugins from a designated directory
+	- read package from file and import to environment
+	- plugin is installed by adding its package(s) to the file
+
+Support executable models
+	- MSC
+	- state machine
+
+Build and execute a project through the "Run" menu
+
+Support for project import and context matching
+	- e.g. inferred from an existing project
+
+
+Bugs
+- Catch all RTEs
+- Cleanup stack trace for debugging failures
+
+
+"TO DO" List
+------------
+1. directory browser
+2. remove org.periquet.lib.awt
+3. Reflective lookup of supported methods
+4. Populate initial completion list with setModelType() and supported model types
+5. Cleanup error messages and stack trace
+	- handle all run time exceptions
+
+
+=====================================================================================
+
+				OPEN SOURCE RELEASE 0.2
+
+Support constraints through "rules"
+	- every model operation (from CLI) is first sent to a rules engine
+	- each model stores a set of rules that are executed
+	- triggered "propagation rules" are displayed
+	- violated "validation rules" are displayed
+	- rules may be numbered
+      	- rules may have provide a simple description of what changes occur
+       	- rules may trigger user interaction to resolve constraints
+       	- rules may provide info, warning or error messages
+
+
+=====================================================================================
+
+				OPEN SOURCE RELEASE 1.0
+
+
+Refactor Models into Data Models Only
+	- model creation operations
+		- CRUD element
+		- CRUD property
+	- stateless utility operations
+		- toString()
+		- writeAll()
+		- update()
+		- findDir()
+		- findFile()
+
+Graphical Meta-Model Creation (like FreeMarker)
+	- Models are just data--they don't have methods
+		- unit tests for models become unnecessary with just data
+		- data models are easy to understand and navigate graphically
+		- data models require constraints
+		- data models are clunky to populate without a GUI
+	- Meta-model Operations
+		- CRUD element type
+		- CRUD property type
+	- Rule Creation
+		- validation rules
+			- e.g. add model constraint (with OCL?)
+		- propagation rules (with optional user confirmation)
+			- e.g. invoke model operations
+		- internal propagation rules
+			- triggered by and impact this model only
+		- external propagation rules
+			- triggered by an external model and impact this model
+
+
+=====================================================================================
+
+				FUTURE RELEASEs
+
+Graphical Cliche' and Context selection
+	1 execute from a list of available cliche's
+	2 enter syntax-checked parameters
+	3 select code to establish context
+
+Integrate robust AST Builder and Pretty Printers for C++ and Java
+
+Generate Groovy from template design and path access
+
+	- should models have utilities on them?
+		- Yes---until they are refactored to trees
+	- how should propagation of model updates be shown?
+		- action execution with names that reflect what model is updated and how
+		 "model XXXX changed: yyyyy "
+	- should each model have its own window and command line?
+		- No.
+		- each model is represented as a view
+		- a command may update multiple models/views
+		- a CBP program creates and updates mutiple models
+		- the CBP programmer examines models with views
+		- a cliche' links multiple model updates with a single construct
+	- is a cliche' just an abstract type framework
+		- it is executable with a context shim
+		- it may be compatible or incompatible with other cliche's
+			- based on constraints: invariants, ensures, relies
+		- they are composable
+			- contexts are composed
+
+- what is the difference between Cliche' and Model?
+	- a model is a stand alone set of properties (usually) organized as a tree
+		- a model has no dependencies on other models---it is standalone
+			- models can reconciled against one another with rules
+		- a model may have one or more views
+		- a model may be executable
+		- a model may contain code snippets (ideally they shouldn't)
+			- code snippets should be modelled as properties
+		- a model may have utilities
+			- e.g. a project model may be built and executed
+	- a cliche' is a set of operations that modify one or more models
+		- the models a cliche' modifies represent its context
+			- models are modified based on SLAP
+			- PIM->PSM change propagation occurs via rules
+		- a cliche' extends a context
+			- context can be viewed as an abstract type model
+			- compatible cliche's can be (manually?) composed
+
+=====================================================================================				
+				
+				DEMONSTRATIONS
+
+The "sizzle" doesn't have to be a fancy U/I.
+It can be a compelling presentation or a simple, powerful code example.
+	- Graham Glass did this sort of thing.
+
+
+CBE Symbian code generation
+	- two-phase ctor
+	- add variable [init]
+	- add pointer variable [init/ctor/dtor]
+	- active objects
+		- executable models 
+			- message sequence
+			- state machine
+		- test case generation
+			- STIF update
+
+
+
+==============================================================
+
+Cliche plugins should be invoked with a U/I
+	- prevents syntactic errors
+	- user doesn't have to see Groovy scripts except for debugging cliche plugins
+
+All cliche plugins are written in Groovy
+	- text templates are written in Groovy
+	- cumbersome even with transforms for String, List<String> and Map<String, String> 
+	- useful future features
+		- automatic removal of extraneous whitespace
+		- WYSIWYG handling of Lists
+		- coding styles applied to text templates
+	- TextTemplates can be used
+		- this would decouple templates from groovy
+		- this would enable styled code snippets to be written independent of cliches
+			(don't know if this is even doable)
+
+Cliche' models represent designs that are merged into a context
+	- cliche's are integrated into the context at pre-defined markers
+	- integration may occur with static or dynamic markers
+		- static markers: defined by text or grammar patterns
+		- [totally unexplored] dynamic markers: defined by behavioral semantics
+
+
+Static Context models correspond to "static cut points" in a pre-existing system
+	- context model is either generated (CBP) or mapped from existing code (CBE)
+		- cliche based programming: code is mostly generated from cliche's
+		- cliche based editting: code is mostly manually produced
+	- static markers (cut points) are either grammar-defined or manually defined
+		- grammar markers: grammar-patterns are matched in well-formed code
+		- manual markers: generated or inserted by hand
+
+[ Totally made up and unexplored]
+Dynamic Context models correspond to "dynamic cut points" in a pre-existing system
+	- context model is either triggered or recognized
+		- triggered context: event patterns are detected explicitly to trigger a cliche'integration
+		- recognized context: event patterns are inferred from program behavior to trigger cliche' integration
+	- dynamic markers (cut points) are either language or system defined
+		- D-AOP defines language-specific dynamic cut points
+		- systems, such as AIN or plug-ins, also define dynamic cut points
+
+==============================================================

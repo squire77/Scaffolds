@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:cmAssociation xmlns:ns2="scaffold.uml.basic.cm">
+    <ID>ASSOC_1</ID>
+    <navigabilityEnabled>false</navigabilityEnabled>
+    <composite>false</composite>
+    <aggregation>true</aggregation>
+    <endPoint1>
+        <visibilityKind>0</visibilityKind>
+        <association>ASSOC_1</association>
+        <class>TYPE_4</class>
+        <static>false</static>
+        <readOnly>false</readOnly>
+        <navigable>true</navigable>
+        <composite>false</composite>
+        <aggregate>true</aggregate>
+    </endPoint1>
+    <endPoint2>
+        <visibilityKind>0</visibilityKind>
+        <association>ASSOC_1</association>
+        <class>TYPE_5</class>
+        <static>false</static>
+        <readOnly>false</readOnly>
+        <navigable>true</navigable>
+        <composite>false</composite>
+        <aggregate>false</aggregate>
+    </endPoint2>
+</ns2:cmAssociation>

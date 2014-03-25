@@ -1,0 +1,23 @@
+LICENSE
+PACKAGE
+IMPORT
+
+CLASS SUPERS INTERFACES {
+    METHODS
+
+    //*** accessors ***************************
+
+    BOOLEAN_GETTER
+    SIMPLE_GETTER
+    LIST_GETTER
+    MAP_GETTER
+    COMPLEX_GETTER
+
+    //*** associations ***********************
+
+    ASSOCIATION
+
+    //*** attributes ***************************
+
+    ATTRIBUTE
+}

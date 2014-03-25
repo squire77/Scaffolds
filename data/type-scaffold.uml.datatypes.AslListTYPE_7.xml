@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:aslList xmlns:ns2="scaffold.uml.datatype">
+    <name>List&lt;MyClass&gt;</name>
+    <visibilityKind>0</visibilityKind>
+    <ID>TYPE_7</ID>
+    <package>PACKAGE_2</package>
+    <baseTypeID>TYPE_1</baseTypeID>
+</ns2:aslList>

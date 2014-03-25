@@ -1,0 +1,22 @@
++ QtAppMainWindow
+ +AddMenu( name, menuItems )
+ +AddAction( name, label, slot ): QtAction
+ +AddMenuItem( name, expression )
+
+1st create menu with optional separation
+  if necesssary, add createMenus()
+  if not exists
+    create menu variable
+    crete menu
+    add menu to menubar
+
+2nd create expression
+  if necessary, add createActions()
+  if not exists
+    create expression variable
+    create expression
+
+3rd create menu item with optional separation
+
+
+4th create submenu with optional separation

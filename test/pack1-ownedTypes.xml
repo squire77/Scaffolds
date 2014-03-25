@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:umlPackage xmlns:ns2="scaffold.uml.basic">
+    <name>pack1</name>
+    <visibilityKind>0</visibilityKind>
+    <ID>PACKAGE_3</ID>
+    <nestingPackage>PACKAGE_2</nestingPackage>
+    <nestedPackages>
+        <packageID>PACKAGE_4</packageID>
+    </nestedPackages>
+    <ownedTypes>
+        <typeID>TYPE_1</typeID>
+        <typeID>TYPE_2</typeID>
+    </ownedTypes>
+</ns2:umlPackage>
